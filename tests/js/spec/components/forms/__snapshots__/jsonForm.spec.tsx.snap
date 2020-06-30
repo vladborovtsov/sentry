@@ -72,7 +72,7 @@ exports[`JsonForm fields prop default 1`] = `
                   withPadding={false}
                 >
                   <div
-                    className="css-1nto0rx-FlexBox e1vnwt6f0"
+                    className="css-102srmy-FlexBox e1vnwt6f0"
                   >
                     <FieldFromConfig
                       field={
@@ -2757,7 +2757,7 @@ exports[`JsonForm form prop default 1`] = `
                   withPadding={false}
                 >
                   <div
-                    className="css-1nto0rx-FlexBox e1vnwt6f0"
+                    className="css-102srmy-FlexBox e1vnwt6f0"
                   >
                     <FieldFromConfig
                       field={
