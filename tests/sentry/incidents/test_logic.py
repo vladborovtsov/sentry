@@ -84,6 +84,7 @@ class CreateIncidentTest(TestCase):
         incident_type = IncidentType.ALERT_TRIGGERED
         title = "hello"
         date_started = timezone.now() - timedelta(minutes=5)
+        date_detected = timezone.now() - timedelta(minutes=4)
         alert_rule = self.create_alert_rule()
 
         self.record_event.reset_mock()
@@ -92,6 +93,7 @@ class CreateIncidentTest(TestCase):
             type_=incident_type,
             title=title,
             date_started=date_started,
+            date_detected=date_detected,
             projects=[self.project],
             alert_rule=alert_rule,
         )
@@ -107,13 +109,15 @@ class CreateIncidentTest(TestCase):
         ).exists()
         assert (
             IncidentActivity.objects.filter(
-                incident=incident, type=IncidentActivityType.STARTED.value, date_added=date_started
+                incident=incident,
+                type=IncidentActivityType.DETECTED.value,
+                date_added=date_detected,
             ).count()
             == 1
         )
         assert (
             IncidentActivity.objects.filter(
-                incident=incident, type=IncidentActivityType.DETECTED.value
+                incident=incident, type=IncidentActivityType.CREATED.value
             ).count()
             == 1
         )
